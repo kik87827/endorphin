@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="./css/style.css" rel="stylesheet">
+	<script src="./js/jquery-1.12.4.min.js"></script>
+	<title>ENDORPHIN ACTORY</title>
+</head>
+
+<body class="front_body">
+	<div class="pc_contents">
+		<div class="bg_front"><img src="images/bg_pc.png" alt=""></div>
+		<div class="contents_box_wrap">
+			<div class="contents_box">
+				<div class="bg_contents"><img src="images/center_pc_img_motion.jpg" alt=""></div>
+				<div class="text_obj"><img src="images/copy_obj.png" alt=""></div>
+				<a href="#" class="btn_obj"><img src="images/btn_obj.png" alt=""></a>
+				<a href="#" class="menu_about menu_obj"><img src="images/menu_about.png" alt=""></a>
+				<a href="#" class="menu_why menu_obj"><img src="images/menu_why.png" alt=""></a>
+				<div class="layer_dim"></div>
+				<div class="cont_layer about">
+					<img src="images/about_cont.png" alt="">
+					<a href="javascript:;" class="btn_cont_close"></a>
+				</div>
+				<div class="cont_layer why">
+					<img src="images/why_cont.png" alt="">
+					<a href="javascript:;" class="btn_cont_close"></a>
+				</div>
+				<span class="rotate_cir cir_01"></span>
+				<span class="rotate_cir cir_02"></span>
+				<span class="rotate_cir cir_03"></span>
+				<span class="rotate_cir cir_04"></span>
+				<span class="rotate_cir cir_05"></span>
+				<span class="rotate_cir cir_06"></span>
+				<span class="rotate_cir cir_07"></span>
+				<span class="rotate_cir cir_08"></span>
+				<span class="rotate_cir cir_09"></span>
+				<span class="rotate_cir cir_10"></span>
+				<span class="rotate_cir cir_11"></span>
+				<span class="rotate_cir cir_12"></span>
+				<span class="rotate_cir cir_13"></span>
+				<span class="rotate_cir cir_14"></span>
+				<span class="rotate_cir cir_15"></span>
+				<span class="rotate_cir cir_16"></span>
+				<span class="rotate_cir cir_17"></span>
+	
+				<span class="move_obj move_01"></span>
+				<span class="move_obj move_02"></span>
+				<span class="move_obj move_03"></span>
+				<span class="move_obj move_04"></span>
+			</div>
+		</div>
+	</div>
+	<div class="mobile_contents">
+		<div class="mobile_main_top">
+			<img src="images/mobile_main_01.png" alt="">
+			<a href="#" class="btn_mobile_top about" title="about"></a>
+			<a href="#" class="btn_mobile_top why" title="why"></a>
+		</div>
+		<div class="mobile_main_bottom">
+			<img src="images/mobile_main_02.jpg" alt="">
+			<a href="#" class="btn_mobile_middle" title="OPEN CHATTING"></a>
+		</div>
+		<div class="mobile_cont_layer" id="about_layer">
+			<div class="mb_cont_top"><img src="images/mobile_about_top.png" alt=""></div>
+			<div class="mb_cont_bottom"><img src="images/mobile_about_bottom.png" alt=""></div>
+			<a href="javascript:;" class="btn_mobile_close"></a>
+		</div>
+		<div class="mobile_cont_layer" id="why_layer">
+			<div class="mb_cont_top"><img src="images/mobile_why_top.png" alt=""></div>
+			<div class="mb_cont_bottom"><img src="images/mobile_why_bottom.png" alt=""></div>
+			<a href="javascript:;" class="btn_mobile_close"></a>
+		</div>
+	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelector(".menu_about").addEventListener("click",(e)=>{
+				e.preventDefault();
+				document.querySelectorAll(".menu_obj").forEach((element)=>{
+					element.classList.add("hidden");
+				});
+				document.querySelector(".cont_layer.about").classList.add("active");
+				$(".layer_dim").fadeIn();
+			},false);
+			document.querySelector(".menu_why").addEventListener("click",(e)=>{
+				e.preventDefault();
+				document.querySelectorAll(".menu_obj").forEach((element)=>{
+					element.classList.add("hidden");
+				});
+				document.querySelector(".cont_layer.why").classList.add("active");
+				$(".layer_dim").fadeIn();
+			},false);
+			document.querySelectorAll(".btn_cont_close").forEach((element)=>{
+				element.addEventListener("click",(e)=>{
+					let thisObj = e.currentTarget;
+					let thisObjParent = thisObj.closest(".cont_layer");
+					thisObjParent.classList.remove("active");
+					document.querySelectorAll(".menu_obj").forEach((element)=>{
+						element.classList.remove("hidden");
+					});
+					$(".layer_dim").fadeOut();
+				},false);
+			});
+			$(".layer_dim").on("click",function(){
+				$(".menu_obj").removeClass("hidden");
+				$(".cont_layer").removeClass("active");
+				$(".layer_dim").fadeOut();
+			});
+
+			$(".btn_mobile_top.about").on("click",function(e){
+				e.preventDefault();
+				$("#about_layer").addClass("active");
+			});
+
+			$(".btn_mobile_top.why").on("click",function(e){
+				e.preventDefault();
+				$("#why_layer").addClass("active");
+			});
+
+		});
+		$(function(){
+			$(window).on("resize",function(){
+				$(".mobile_cont_layer").css("height","");
+				// if($(document).height()>$(window).height()){
+				// 	$(".mobile_cont_layer").css("height",$(document).height())
+				// }else{
+				// 	$(".mobile_cont_layer").css("height",$(window).height())
+				// }
+				
+			}).resize();
+			$(".btn_mobile_close").on("click",function(e){
+				e.preventDefault();
+				$(this).parents(".mobile_cont_layer").removeClass("active");
+			});
+		});
+	</script>
+</body>
+</html>
